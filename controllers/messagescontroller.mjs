@@ -1,4 +1,4 @@
-import messagesStorage from '../storage/messages.mjs';
+import messagesStorage from '../storage/messagesstorage.mjs';
 
 const getMessages = messagesStorage.getMessages;
 
@@ -12,4 +12,15 @@ const postMessage = ((req, res, next) => {
   next();
 });
 
-export default { getMessages, postMessage };
+const getMessage = ((req, res, next) => {
+  try {
+    const messageId = parseInt(req.params.messageId);
+    const message = messagesStorage.getMessageById(messageId);
+    req.message = message;
+    next();
+  } catch (e) {
+    next(e);
+  }
+});
+
+export default { getMessages, getMessage, postMessage };

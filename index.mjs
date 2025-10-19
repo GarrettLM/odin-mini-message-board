@@ -18,6 +18,10 @@ app.set("view engine", "ejs");
 
 app.use('/', messagesRouter);
 
+app.use((err, req, res, next) => {
+  res.render('error', { error: err });
+});
+
 app.listen(PORT, (err) => {
   if (err) {
     console.log(err);

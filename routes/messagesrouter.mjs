@@ -16,4 +16,9 @@ messagesRouter.post("/new", [
   (req, res) => { res.redirect("/") },
 ]);
 
+messagesRouter.get("/message/:messageId", [
+  messagesController.getMessage,
+  (req, res) => { res.render("message", { message: req.message }) }
+]);
+
 export default messagesRouter;

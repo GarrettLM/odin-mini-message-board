@@ -6,6 +6,7 @@
         <li>
           <div><%= messages[i].user %> </div>
           <div><%= messages[i].text %> </div>
+          <a href=/message/<%= messages[i].id%>><button>Open</button></a>
         </li>
       <% } %>
     </ul>
