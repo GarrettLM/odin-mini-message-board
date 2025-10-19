@@ -7,4 +7,8 @@ messagesRouter.get("/", (req, res) => {
   res.render("index", { title: "Mini Messageboard", messages: messagesController.getMessages() });
 });
 
+messagesRouter.get("/new", (req, res) => {
+  res.render('messageform', { title: "Create Message" });
+});
+
 export default messagesRouter;
