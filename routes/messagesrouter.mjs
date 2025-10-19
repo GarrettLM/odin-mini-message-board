@@ -11,8 +11,9 @@ messagesRouter.get("/new", (req, res) => {
   res.render('messageform', { title: "Create Message" });
 });
 
-messagesRouter.post("/new", (req, res) => {
-  res.redirect("/");
-});
+messagesRouter.post("/new", [
+  messagesController.postMessage,
+  (req, res) => { res.redirect("/") },
+]);
 
 export default messagesRouter;
